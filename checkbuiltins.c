@@ -10,8 +10,12 @@
 
 int checkBuiltins(char **av, char *buff, int count __attribute((unused)))
 {
-
-	if (av && *av && buff)
+    if (_strcmp("env", av[0]) == 0 && _strlen(av[0]) == 3)
+	{
+			write(1, environ, 1000);
+			return (0);
+	}
+	else if (av && *av && buff)
 	{
 		if (_strcmp("exit", av[0]) == 0 && _strlen(av[0]) == 4)
 			return (2);
