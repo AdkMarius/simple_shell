@@ -26,9 +26,7 @@ int processus(char **argv, char **av, char *buf)
 		wait(&status);
 	else if ((execve(av[0], av, NULL)) == -1)
 	{
-        print_error(argv);
-		free_p(1, buf);
-		free_a(av);
+        print_error(argv), free_p(1, buf), free_a(av);
 		exit(98);
 	}
 	return (status);
