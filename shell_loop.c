@@ -21,7 +21,6 @@ int shell_loop(char **argv, char *lineptr)
     {
         if (lineptr[i] == ' ' || lineptr[i] == '\t')
         {
-            free(lineptr);
             return (-1);
         }
     }
@@ -40,8 +39,7 @@ int shell_loop(char **argv, char *lineptr)
     {
         if (execve(arg[0], arg, environ) == -1)
         {
-            print_error(argv);
-            free(lineptr);
+            return (-1);
         }
         exit(0);
     }
