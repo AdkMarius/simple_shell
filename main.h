@@ -24,5 +24,6 @@ extern char **environ;
 int _print_prompt(const char *prompt, unsigned int size);
 void print_error(char **argv);
 int shell_loop(char **argv, char *lineptr);
+int _strlen(char *s);
 
 #endif

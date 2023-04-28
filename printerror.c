@@ -6,8 +6,27 @@
  * 
  * Return: Nothing
 */
-
 void print_error(char **argv)
 {
-    dprintf(2, "%s: No such file or directory\n", argv[0]);
+    char message[] = "No such file or directory\n";
+
+    write(2, *argv, _strlen(*argv));
+    write(2, ": ", 2);
+    write(2, message, _strlen(message));
+}
+
+/**
+ * _strlen - count the character
+ * @s: string
+ * 
+ * Return: length
+*/
+int _strlen(char *s)
+{
+    int i;
+
+    for (i = 0; s[i] != '\0'; i++)
+        ;
+    
+    return (i);
 }
