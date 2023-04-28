@@ -29,6 +29,11 @@ int shell_loop(char *lineptr)
     arg[0] = token;
     arg[1] = NULL;
 
+    if (exist_file(arg[0]) == -1)
+    {
+        return (-1);
+    }
+    
     pid = fork();
     if (pid == -1)
     {

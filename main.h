@@ -14,6 +14,7 @@
 #include <signal.h>
 #include <inttypes.h>
 #include <errno.h>
+#include <fcntl.h>
 
 /*#define OUTSIDE 0
 #define INSIDE 1
@@ -22,6 +23,7 @@
 extern char **environ;
 
 int _print_prompt(const char *prompt, unsigned int size);
+int exist_file(char *pathname);
 void print_error(char **argv);
 int shell_loop(char *lineptr);
 int _strlen(char *s);
