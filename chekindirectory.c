@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * checkifworkingdirectory - check if the path contains current directory
- *
+ * checkdirectorypathpwd - check if the path contains current directory
  * @pwd: address of the pointer pwd
  * @path: address of the pointer path
  *
@@ -17,7 +16,7 @@ char *checkdirectorypath(char **pwd, char **path)
 		str = malloc(sizeof(char) * (_strlen(*pwd) + _strlen(*path) + 1));
 		if (str == NULL)
 		{
-			free_p(2, *pwd, *path);
+			//free_p(2, *pwd, *path);
 			return (NULL);
 		}
 		_strcpy(str, *pwd), _strcat(str, *path);
@@ -27,7 +26,7 @@ char *checkdirectorypath(char **pwd, char **path)
 		str = updatethepath(*path, *pwd);
 		if (str == NULL)
 		{
-			free_p(2, *pwd, *path);
+			//free_p(2, *pwd, *path);
 			return (NULL);
 		}
 	}
@@ -36,7 +35,7 @@ char *checkdirectorypath(char **pwd, char **path)
 		str = malloc(sizeof(char) * (_strlen(*path)) + 1);
 		if (str == NULL)
 		{
-			free_p(2, *pwd, *path);
+			//free_p(2, *pwd, *path);
 			return (NULL);
 		}
 		_strcpy(str, *path);

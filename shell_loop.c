@@ -21,12 +21,13 @@ int shell_loop(char *lineptr, char **argv, int count)
 	{
 		if (!(findinthepath(av)))
 		{
-			print_error(argv), free_p(1, lineptr), free_a(av);
+			print_error(argv);
+			free_p(1, lineptr), free_a(av);
 			return (2);
 		}
 		else
 		{
-			processus(argv, av, lineptr), free_p(2, *av, lineptr), free_a(av);
+			processus(argv, av, lineptr);
 			return (0);
 		}
 	}

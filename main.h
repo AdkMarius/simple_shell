@@ -40,6 +40,6 @@ char *_strstr(char *haystack, char *needle);
 char *checkdirectorypath(char **pwd, char **path);
 char *initializepath(char **pwd);
 char *updatethepath(char *path, char *pwd);
-char *findinthepath(char **firstarg);
+char *findinthepath(char **av);
 
 #endif
