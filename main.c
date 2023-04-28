@@ -30,8 +30,6 @@ int main(int argc __attribute__((unused)), char *argv[])
             print_error(argv);
         }
 
-        if (retour == 2)
-            break;
         _print_prompt("$ ", 2);
         wget = getline(&lineptr, &n, stdin);
         if (wget == -1)
