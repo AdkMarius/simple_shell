@@ -28,6 +28,7 @@ int shell_loop(char *lineptr, char **argv, int count)
 		else
 		{
 			processus(argv, av, lineptr);
+			free_p(1, lineptr), free_a(av);
 			return (0);
 		}
 	}
