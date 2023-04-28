@@ -34,6 +34,8 @@ int main(int argc __attribute__((unused)), char *argv[])
             break;
         _print_prompt("$ ", 2);
         wget = getline(&lineptr, &n, stdin);
+        if (wget == -1)
+            _print_prompt("\n", _strlen("\n"));
     }
 
     return (0);
