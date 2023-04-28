@@ -1,55 +1,32 @@
 #include "main.h"
-
 /**
  * shell_loop - shell program
- * @argv: arguments from standard input
+ * @argv: name of executable
  * @count: counter
+ * @lineptr: arguments from terminal
  * 
- * Return: 0 if success
-*/
-
-int shell_loop(char *lineptr)
+ * Return: 0
+ */
+int shell_loop(char *lineptr, char **argv, int count)
 {
-    char *token = NULL, *arg[2];
-    pid_t pid;
-    int i, status;
+	char **av = NULL;
 
-    if (lineptr == NULL)
-        return (-1);
-
-    for (i = 0; lineptr[i] != '\0'; i++)
-    {
-        if (lineptr[i] == ' ' || lineptr[i] == '\t')
-        {
-            return (-1);
-        }
-    }
-
-    token = strtok(lineptr, " \n\t");
-    arg[0] = token;
-    arg[1] = NULL;
-
-    if (exist_file(arg[0]) == -1)
-    {
-        return (-1);
-    }
-    
-    pid = fork();
-    if (pid == -1)
-    {
-        perror("Error\n");
-        exit(EXIT_FAILURE);
-    }
-    if (pid == 0)
-    {
-        if (execve(arg[0], arg, environ) == -1)
-        {
-            return (-1);
-        }
-        exit(0);
-    }
-    else
-        wait(&status);
-    
-    return (0);
+	av = fillarguments(lineptr, " \t"), count++;
+	if (av[0] == NULL)
+	{
+		free_p(1, lineptr), free_a(av);
+		return (0);
+	}
+    if (av[0][0] != '/' && av[0][0] != '.')
+	{
+		print_error(argv);
+        return (2);
+	}
+	if (processus(argv, av, lineptr) != 0)
+	{
+		free_p(1, lineptr), free_a(av);
+		return (2);
+	}
+	//free_p(1, lineptr), free_a(av);
+	return (0);
 }

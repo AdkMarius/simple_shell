@@ -16,16 +16,21 @@
 #include <errno.h>
 #include <fcntl.h>
 
-/*#define OUTSIDE 0
+#define OUTSIDE 0
 #define INSIDE 1
-#define BUFFER 1000*/
+#define BUFFER 1000
 
 extern char **environ;
 
 int _print_prompt(const char *prompt, unsigned int size);
 int exist_file(char *pathname);
 void print_error(char **argv);
-int shell_loop(char *lineptr);
+int shell_loop(char *lineptr, char **argv, int count);
 int _strlen(char *s);
+int number_of_words(char *str, char *separator);
+char **fillarguments(char *buf, char *separator);
+void free_p(const unsigned int n, ...);
+void free_a(char **arr);
+int processus(char **argv, char **av, char *buf);
 
 #endif

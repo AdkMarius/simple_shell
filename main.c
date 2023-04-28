@@ -12,7 +12,8 @@ int main(int argc __attribute__((unused)), char *argv[])
     char *lineptr = NULL;
     size_t n;
     ssize_t wget;
-    int retour;
+    int retour, count = 0, status;
+    pid_t pid;
 
     while (1)
     {
@@ -25,16 +26,27 @@ int main(int argc __attribute__((unused)), char *argv[])
             exit(EXIT_SUCCESS);
         }
 
-        retour = shell_loop(lineptr);
-        if (retour == -1)
-        {
-            print_error(argv);
-        }
-
-        free(lineptr);
-        lineptr = NULL;
-        n = 0;
-    }
-
+        retour = shell_loop(lineptr, argv, count);
+		if (retour == 2)
+		{
+			count++;
+			pid = fork();
+			if (pid == -1)
+			{
+				perror("Error\n");
+				return (EXIT_FAILURE);
+			}
+			if (pid != 0)
+			{
+				wait(&status);
+				return (127);
+			}
+			else
+				continue;
+		}
+		if (retour != 0)
+			break;
+		count++;
+	}
     return (0);
 }
