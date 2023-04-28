@@ -8,13 +8,13 @@
  * Return: 0 if success
 */
 
-int shell_loop(char **argv, char *lineptr)
+int shell_loop(char *lineptr)
 {
     char *token = NULL, *arg[2];
     pid_t pid;
     int i, status;
 
-    if (argv == NULL || lineptr == NULL)
+    if (lineptr == NULL)
         return (-1);
 
     for (i = 0; lineptr[i] != '\0'; i++)

@@ -14,28 +14,26 @@ int main(int argc __attribute__((unused)), char *argv[])
     ssize_t wget;
     int retour;
 
-    _print_prompt("$ ", 2);
-    wget = getline(&lineptr, &n, stdin);
-    if (wget == -1)
+    while (1)
     {
-        free(lineptr);
-        return (-1);
-    }
+        _print_prompt("$ ", 2);
+        wget = getline(&lineptr, &n, stdin);
+        if (wget == -1)
+        {
+            free(lineptr);
+            _print_prompt("\n", _strlen("\n"));
+            exit(EXIT_SUCCESS);
+        }
 
-    while (wget != -1)
-    {
-        retour = shell_loop(argv, lineptr);
+        retour = shell_loop(lineptr);
         if (retour == -1)
         {
             print_error(argv);
         }
 
-        _print_prompt("$ ", 2);
-        wget = getline(&lineptr, &n, stdin);
-        if (wget == -1)
-        {
-            _print_prompt("\n", _strlen("\n"));
-        }
+        free(lineptr);
+        lineptr = NULL;
+        n = 0;
     }
 
     return (0);
