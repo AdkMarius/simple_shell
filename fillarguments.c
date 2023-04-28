@@ -12,12 +12,15 @@ char **fillarguments(char *buf, char *separator)
 	char *token;
 	int i = 0, length;
 
-	if (buf == NULL && separator == NULL)
+	if (buf == NULL || separator == NULL)
 		return (NULL);
 
 	arr = malloc(sizeof(char *) * (number_of_words(buf, separator) + 1));
 	if (arr == NULL)
+	{
+		free_a(arr);
         return (NULL);
+	}
 
 	token = strtok(buf, separator);
 	while (token)
