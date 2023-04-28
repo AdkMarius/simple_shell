@@ -21,7 +21,6 @@ int main(int argc __attribute__((unused)), char *argv[])
         wget = getline(&lineptr, &n, stdin);
         if (wget == -1)
         {
-            free(lineptr);
             _print_prompt("\n", _strlen("\n"));
             exit(EXIT_SUCCESS);
         }

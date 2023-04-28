@@ -27,6 +27,6 @@ int shell_loop(char *lineptr, char **argv, int count)
 		free_p(1, lineptr), free_a(av);
 		return (2);
 	}
-	//free_p(1, lineptr), free_a(av);
+	free_p(1, lineptr), free_a(av);
 	return (0);
 }
