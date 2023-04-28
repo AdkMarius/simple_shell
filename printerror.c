@@ -14,19 +14,3 @@ void print_error(char **argv)
     write(STDERR_FILENO, ": ", 2);
     write(STDERR_FILENO, message, _strlen(message));
 }
-
-/**
- * _strlen - count the character
- * @s: string
- * 
- * Return: length
-*/
-int _strlen(char *s)
-{
-    int i;
-
-    for (i = 0; s[i] != '\0'; i++)
-        ;
-    
-    return (i);
-}

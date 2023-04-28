@@ -17,11 +17,7 @@ char **fillarguments(char *buf, char *separator)
 
 	arr = malloc(sizeof(char *) * (number_of_words(buf, separator) + 1));
 	if (arr == NULL)
-    {
-        free_p(1, arr);
         return (NULL);
-
-    }
 
 	token = strtok(buf, separator);
 	while (token)
