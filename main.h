@@ -23,7 +23,6 @@
 extern char **environ;
 
 int _print_prompt(const char *prompt, unsigned int size);
-int exist_file(char *pathname);
 void print_error(char **argv);
 int shell_loop(char *lineptr, char **argv, int count);
 int _strlen(char *s);

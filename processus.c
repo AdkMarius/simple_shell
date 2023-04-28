@@ -19,7 +19,7 @@ int processus(char **argv, char **av, char *buf)
 	id = fork();
 	if (id == -1)
 	{
-		free_p(1, buf);
+		free_p(1, buf), free_a(av);
 		return (1);
 	}
 	if (id != 0)
