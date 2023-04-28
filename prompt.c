@@ -13,7 +13,7 @@ int _print_prompt(const char *prompt, unsigned int size)
 
 	if (isatty(STDIN_FILENO))
 	{
-		n = write(STDIN_FILENO, prompt, size);
+		n = write(STDOUT_FILENO, prompt, size);
 		if (n == -1)
 			return (-1);
 	}

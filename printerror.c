@@ -10,9 +10,9 @@ void print_error(char **argv)
 {
     char message[] = "No such file or directory\n";
 
-    write(2, *argv, _strlen(*argv));
-    write(2, ": ", 2);
-    write(2, message, _strlen(message));
+    write(STDERR_FILENO, *argv, _strlen(*argv));
+    write(STDERR_FILENO, ": ", 2);
+    write(STDERR_FILENO, message, _strlen(message));
 }
 
 /**
