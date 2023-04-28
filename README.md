@@ -50,16 +50,11 @@ $
 ### Files
  | File | Description |
  | ------------- | ------------- |
- | shell.c | main function that calls the other functions |
- | main.h | header file (contains all the prototypes) |
- | man_simple_shell | man page |
- | fill_args.c | fill an array with every input typed by the user |
- | exist_file.c | verify if a file exist |
- | notfound.c | prints error message when a command is not found |
- | verify_path.c| verify if the first command can be executed |
- | exec.c | creates a new child process, executes a command and wait for the child process to update the status |
- | _print.c | contains three functions, _putchar, print_num and _printf which allow to print the characters on the terminal |
- | _str.c | contains three functions, _strcmp, _strdup, _strlen which are the same role than the functions of string.h library
+ | main.c | entry point of shell
+ | main.h | headers file
+ | prompt.c | function which display the prompt on terminal
+ | printerror.c | function which dislpay the error message
+ | shell_loop.c | function which call others functions
 
 ## Project Requirements
 - All your files will be compiled on Ubuntu 14.04 LTS
